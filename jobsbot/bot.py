@@ -112,7 +112,7 @@ async def check_jobs(context: ContextTypes.DEFAULT_TYPE) -> None:
                 logger.exception("Could not send alert to chat %s", chat_id)
             else:
                 mark_sent(session, chat_id, job.url)
-            await asyncio.sleep(0.05)  # stay well under Telegram's rate limits
+            await asyncio.sleep(0.05)
 
 
 def register_handlers(application: Application) -> None:
