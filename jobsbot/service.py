@@ -9,7 +9,7 @@ from .source import JobPost
 
 MAX_FILTERS_PER_CHAT = 10
 MAX_KEYWORD_LENGTH = 50
-MAX_ALERTS_PER_CHAT_PER_RUN = 5  # avoids flooding a new user with the whole backlog
+MAX_ALERTS_PER_CHAT_PER_RUN = 5 
 
 _OLDEST = datetime.min.replace(tzinfo=UTC)
 

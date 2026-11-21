@@ -73,7 +73,6 @@ async def fetch_remotive(client: httpx.AsyncClient) -> list[JobPost]:
 async def fetch_remoteok(client: httpx.AsyncClient) -> list[JobPost]:
     response = await client.get(REMOTEOK_URL)
     response.raise_for_status()
-    # The first element of the RemoteOK feed is a legal notice, not a job.
     posts = (_parse_remoteok(item) for item in response.json()[1:])
     return [post for post in posts if post]
 
@@ -90,5 +89,5 @@ async def fetch_all_jobs(client: httpx.AsyncClient) -> list[JobPost]:
             logger.warning("Source %s failed: %r", fetch.__name__, result)
             continue
         for job in result:
-            jobs.setdefault(job.url, job)  # de-duplicate by URL
+            jobs.setdefault(job.url, job)
     return list(jobs.values())
